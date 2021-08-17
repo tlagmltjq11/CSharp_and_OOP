@@ -1,4 +1,8 @@
 ## Object
+
+![오브젝트클래스](https://user-images.githubusercontent.com/43705434/129730853-237e6fd5-6c7f-442e-834a-ff197f2efcae.PNG)<br>
+<br>
+
 C#의 모든 클래스의 최상위에 있는 클래스이다.<br>
 따라서 사용자 정의 클래스를 비롯한 모든 클래스는 Object를 상속받는다.<br>
 -> 고로 모든 타입의 값을 할당할 수 있는 **다형성**을 사용할 수 있다.<br>
