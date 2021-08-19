@@ -17,7 +17,7 @@ File이나 Font, DB Connection 관련 클래스들은 **unmanageed 리소스**�
 -> 관리되지않는 리소스란 **IDisposable** 을 구현하고있는 클래스들로 **외부 자원**들을 의미한다.<br>
 -> 데이터베이스라던지 파일IO라던지  stream 등등.<br>
 -> 이러한 **unmanaged resource는 ⭐ GC에 의해 관리되지 않기 ⭐ 때문에 직접 release해야한다.**<br>
--> 정확히는 Dispose 내에 메모리해제를 위한 작업을 구현해야 한다.<br>
+-> 정확히는 Dispose 내에 메모리해제를 위한 작업을 구현해야 한다.(스트림 닫기, 연결 끊기 등)<br>
 -> C#에서 제공하는 IDisposable를 상속받은 클래스들은 당연히 이미 구현되어있다.<br>
 -> 그에 반해 managed resource 는 .NET 에서 생성한 모든 객체를 말하는 것이다.<br>
 
