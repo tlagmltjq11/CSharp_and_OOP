@@ -16,8 +16,7 @@ Unmanagement 메모리 해제나 Stream Close를 구현하도록 권장을 하�
 <br>
 
 ## 정답
-클래스가 파일 핸들이나 네트워크 연결 같은 Unmanaged 리소스를 가지고 있는 경우,<br>
-이 리소스를 해제해 주기 위해<br>
+클래스가 파일 핸들이나 네트워크 연결 같은 Unmanaged 리소스를 가지고 있는 경우, 이 리소스를 해제해 주기 위해 다음과 같은 방법을 사용할 수 있다.<br>
 1. Finalizer (Destructor),<br>
 2. Dispose 패턴을 사용할 수 있다.<br>
 <br>
