@@ -7,6 +7,10 @@ C#에서는 try, catch, finally라는 키워드를 사용하여 Exception을 핸
 또한 throw라는 C# 키워드를 통해 Exception을 만들어 던지거나 혹은 기존 Exception을 다시 던질 수 있다.<br>
 <br>
 
+**예외 종류들**<br>
+![예외종류](https://user-images.githubusercontent.com/43705434/130107585-9559f4fb-fc3f-4986-b877-fef6140c040d.PNG)<br>
+<br>
+
 ```c#
 try
 {
