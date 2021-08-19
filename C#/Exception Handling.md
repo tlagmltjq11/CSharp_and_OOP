@@ -185,11 +185,18 @@ namespace ConsoleApplication35
 
 이번 강좌는 여기서 마치도록 하겠습니다. 수고하셨습니다.
 
+ .NET의 System.Exception은 모든 Exception의 Base 클래스이며, 예외 처리는 이 Exception 객체를 기본으로 처리하게 된다.
+
+
+
 섬세한 예외 처리가 필요한 겨우 Exception 클래스를 마구 남용해선 안된다.
 익셉션 형식은 프로그래머가 발생할 것으로 계산한 예외 말고도 다른 예외까지 받아낼 수 있기 때문이다.
 그 예외가 현재 코드가아닌 상위 코드에서 처리해야할 예외라면 이코드는 버그를 만들고 있는 셈이 되므로
 남용해선 안된다.
 throw 관련 추가
 
+https://1q1w.github.io/c%23%20basic/csharp_exception/ 사용자 정의 예외 클래스 예제
+
+https://www.csharpstudy.com/CSharp/CSharp-exception.aspx
 https://mandy8303.tistory.com/18
 출처: https://blog.hexabrain.net/149 [끝나지 않는 프로그래밍 일기]
