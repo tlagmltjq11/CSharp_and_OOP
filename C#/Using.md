@@ -28,14 +28,14 @@ Unmanagement 메모리 해제나 Stream Close를 구현하도록 권장**을 하
 -> [소멸자보다 Dispose 패턴을 사용해야하는 이유](http://www.simpleisbest.net/post/2011/05/12/Finalizer-Usage-Pattern.aspx)<br>
 <br>
 
-👉 **자원을 반납하지 않는다면** <br>
+👉 **자원을 반납하지 않는다면?** <br>
 1. DB Connection Open만하고 Close하지 않아 메모리 낭비와 에러 발생 가능성<br>
 
 2. memory stream에 데이터를 넣고 Dispose 해주지 않아 계속 메모리를 잡아먹고있는 경우 등.<br>
 <br>
 <br>
 
-👉 **위와 같은 상황이 없도록 Using을 사용하자는 것.<br>
+👉 **위와 같은 상황이 없도록 Using을 사용하자는 것.**<br>
 이때 일일이 Close하지 않고 ⭐⭐ **Using을 이용하면, 해당 범위를 벗어날때 자동으로 Dispose** ⭐⭐ 돼서 관리가 쉬워진다.<br>
 (물론 커스텀 객체라면 IDisposable을 상속받아 Dispose를 구현해야 할 것.)<br>
 <br>
