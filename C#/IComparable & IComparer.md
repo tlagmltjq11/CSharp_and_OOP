@@ -8,9 +8,16 @@ C#의 컬렉션은 대부분 Sort 메서드를 제공하는데 IComparable 인�
 정렬하는 과정에서 입력 인자로 받은 IComparer 개체를 이용한다.<br>
 -> 기본 방식으로 정렬하는 것이 아니라 새로운 기준을 기반으로 정렬하고 싶다면 IComparer를 구현한 클래스를 넘겨주면 되는 것.<br>
 
+IComparable<T>를 이용하여 타입의 기본적인 선후 관계를 정의하고 IComparer<T>를 이용하여 기본적인 선후 관계 이외에 추가적인 선후 관계를 정의할 수 있다.
+
+
+
 C#의 System에 정의되어 있는 기본 형식들은 ICompable 인터페이스를 기반으로 정의되어 있어서<br>
 기본 형식을 보관한 컬렉션은 Sort 메서드를 이용하여 정렬할 수 있다.<br>
 <br>
+    
+.NET 환경이 제공하는 최신 API는 IComparable<T>를 사용하지만 일부 오래된 API들은 여전히 IComparable를 구현하기 때문에 IComparable<T>를 구현할 때는 IComparable를 같이 구현해줘야 한다.    
+    
 
 ```c#
 interface IComparable
