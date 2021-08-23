@@ -1,4 +1,11 @@
 ## 🔔 yield
+
+아래 링크들도 함께 공부해야 할 부분들<br>
+[IEnumerable와 IEnumerator](https://github.com/tlagmltjq11/CSharp_and_OOP/blob/main/C%23/IEnumerable%20%26%20IEnumerator.md)<br>
+[코루틴](https://github.com/tlagmltjq11/CSharp_and_OOP/blob/main/C%23/Coroutine.md)<br>
+<br>
+<br>
+
 👉 **첫번째 사용법**<br>
 C#의 yield 키워드는 호출자(Caller)에게 컬렉션 **데이터를 하나씩 리턴할 때 사용**한다.<br>
 흔히 Enumerator(Iterator)라고 불리우는 이러한 기능은 집합적인 데이터셋으로부터 데이터를 하나씩 호출자에게 보내주는 역할을 한다.<br>
