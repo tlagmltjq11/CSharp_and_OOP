@@ -34,6 +34,118 @@ yield는 yield return 또는 yield break의 2가지 방식으로 사용되는데
 -> **유니티에서는 멀티스레딩을 지원하지 않기 때문에 해당 코루틴 매커니즘을 사용해서 병렬 작업이 되는 것 처럼 실행한다.** ⭐<br>
 <br>
 
+```c#
+public class CoroutineStudy : MonoBehaviour
+{
+    private void Start()
+    {
+        StartCoroutine(DoCoroutine());
+        Debug.Log("Start");
+    }
+    
+    IEnumerator DoCoroutine()
+    {
+        Debug.Log("DoCoroutine WaitForSeconds");
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("DoCoroutine Null");
+        yield return null;
+        Debug.Log("DoCoroutine end");
+    }
+}
+```
+위 코드 처럼 코루틴을 사용하는 것을 볼 수 있는데 이러한 코루틴을 직접 구현해보면 아래와 같을 것이다.<br>
+<br>
+
+```c#
+public class CoroutineStudy : MonoBehaviour
+{
+    // native code written by compiler service
+    class PseudoCoroutineEnumerator : IEnumerator
+    {
+        int _state = 0;
+        object _current = null;
+        public object Current => _current;
+
+        public bool MoveNext()
+        {
+            switch (_state)
+            {
+                case -1:
+                    return false;
+                case 0:
+                    Debug.Log("DoPseudoCoroutine WaitForSeconds");
+                    _state++;
+                    _current = new WaitForSeconds(1.0f);
+                    return true;
+                case 1:
+                    Debug.Log("DoPseudoCoroutine Null");
+                    _state++;
+                    _current = null;
+                    return true;
+                case 2:
+                    _state = -1;
+                    Debug.Log("DoPseudoCoroutine end");
+                    return true;
+            }
+            return false;
+        }
+
+        public void Reset()
+        {
+            _state = 0;
+        }
+    }
+
+    IEnumerator enumerator;                         // native code of UnityEngine
+    private void Start()
+    {
+        StartPseudoCoroutine(DoPseudoCoroutine());  // native code of UnityEngine
+        Debug.Log("Start");
+
+    }
+
+    float seconds = 1.0f;    // = WaitForSeconds.m_seconds
+    float elapsed = .0f;     // native code of UnityEngine
+    private void LateUpdate()
+    {
+        // native code of UnityEngine
+        if (enumerator.Current != null)
+        {
+            if (enumerator.Current is WaitForSeconds)
+            {
+                if (seconds < elapsed)
+                {
+                    enumerator.MoveNext();
+                }
+                elapsed += Time.deltaTime;
+            }
+        }
+        else
+        {
+            enumerator.MoveNext();
+        }
+    }
+
+    // native code of UnityEngine
+    void StartPseudoCoroutine(IEnumerator enumerator)
+    {
+        this.enumerator = enumerator;
+        enumerator.MoveNext();
+    }
+
+    IEnumerator DoPseudoCoroutine()
+    {
+        // native code written by compiler service
+        return new PseudoCoroutineEnumerator();
+    }
+}
+```
+<br>
+[해당 링크](https://planek.tistory.com/36)에서는 추측이지만 위와 같이 동작 할 것이라고 한다.<br>
+**MoveNext()와 Current를 참조해 코루틴을 구현하기 때문에 yield를 만나면 위와 같이 코드를 구분해서**<br>
+순서대로 실행 할 수 있도록 **코드열거자와 같이 동작할 것이라는 것이다.**<br>
+<br>
+
 👉 **그 외**<br>
 * 함수의 상태를 저장/복원 하는게 가능하다.<br>
 ->오래 걸리는 작업을 잠시 끊거나 원하는 타이밍에 함수를 잠시 스탑했다가 재시작 할 수 있다.<br>
@@ -175,3 +287,4 @@ yield break문은 try-catch 문 안에선 쓸 수 있지만 finally 에선 쓸 �
 ## 🔔 참조링크
 https://ansohxxn.github.io/c%20sharp/enumerate/ <br>
 http://www.csharpstudy.com/CSharp/CSharp-yield.aspx <br>
+https://planek.tistory.com/36 <br>
