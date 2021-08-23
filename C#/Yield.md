@@ -142,7 +142,7 @@ public class CoroutineStudy : MonoBehaviour
 ```
 <br>
 [해당 링크](https://planek.tistory.com/36)에서는 추측이지만 위와 같이 동작 할 것이라고 한다.<br>
-**MoveNext()와 Current를 참조해 코루틴을 구현하기 때문에 yield를 만나면 위와 같이 코드를 구분해서**<br>
+**MoveNext()와 Current를 참조해 코루틴을 구현하기 때문에 yield를 만나면 위와 같이 코드를 구분해<br>
 순서대로 실행 할 수 있도록 **코드열거자와 같이 동작할 것이라는 것이다.**<br>
 <br>
 
