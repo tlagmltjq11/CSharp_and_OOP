@@ -13,6 +13,9 @@ public interface IEnumerable
 }
 ```
 <br>
+
+![IEnumerator](https://user-images.githubusercontent.com/43705434/130456946-09b3afd5-8e40-4eaa-9c4b-a029a8f9e336.PNG)<br>
+<br>
 <br>
 
 ## 🔔 IEnumerator
