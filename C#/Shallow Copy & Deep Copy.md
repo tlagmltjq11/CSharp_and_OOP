@@ -116,7 +116,7 @@ static void Main()
   
   //깊은 복사
   Person person2 = (Person)person.Clone();
-  person2.name = "진시황";
+  person2.name = "진시황"; // string은 불변객체이기 때문에 Global pool에서 따로 관리함. 고로 둘 다 진시황이되지 않는다.
   person2.age = 55;
   person2.car.model = "뉴산타페";
   
