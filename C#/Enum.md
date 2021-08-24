@@ -6,4 +6,7 @@
 열거형은 정수형 상수()에 이름을 붙여서 소스에서 ⭐ 이해하기 쉽도록 ⭐ 해준다.<br>
 -> 코드가 단순해지며 가독성이 좋다.<br>
 <br>
+
+Enum.GetValues -> int로 반환<br>
+Enum.GetNames -> string으로 반환<br>
 <br>
