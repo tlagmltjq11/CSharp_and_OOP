@@ -162,7 +162,7 @@ Heap(**정확히는 Heap의 String Intern Pool 영역**)에는 해당 주소에 
 2번 과정을 거치면 ss변수에 대한 스택 메모리에는 Hello의 값을 갖고 있는 주소를 갖게되고<br>
 이에 따라 ss의 값은 s의 값과 동일한 위치를 참조하게 된다.(stack 메모리 주소 단순 복사)<br>
 -> **String Intern Pool 내부 "Hello"를 가리키는 주소를 갖고있던 s의 값(주소)을 그대로 복사한 것.<br>
--> 고로 Heap에 메모리가 따로 할당되지 않았을 것으로 생각한다.**<br>
+-> 고로 Heap에 메모리가 따로 할당된 것이 아닌 참조변수로서 참조값을 복사한 것 뿐이다.**<br>
 
 ![인터풀2](https://user-images.githubusercontent.com/43705434/130624793-6447eb7e-eab2-4fe0-b604-00ef8ae62376.PNG)<br>
 <br>
