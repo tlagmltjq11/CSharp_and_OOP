@@ -2,7 +2,7 @@
 
 아래 링크들도 함께 공부해야 할 부분들<br>
 [IEnumerable와 IEnumerator](https://github.com/tlagmltjq11/CSharp_and_OOP/blob/main/C%23/IEnumerable%20%26%20IEnumerator.md)<br>
-[코루틴](https://github.com/tlagmltjq11/CSharp_and_OOP/blob/main/C%23/Coroutine.md)<br>
+[코루틴](https://github.com/tlagmltjq11/Game_Programming/blob/main/_Unity/Coroutine.md)<br>
 <br>
 <br>
 
