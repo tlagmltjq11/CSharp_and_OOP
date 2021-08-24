@@ -1,4 +1,4 @@
-## string
+## 🔔 string
 C#에서는 다른 언어에서와 마찬가지로 문자열을 문자배열(char[])로 사용할 수 있다.<br>
 하지만 C#에서 기본 제공하는 string 키워드를 사용하여 문자열 변수를 선언할 수도 있다.<br>
 string 키워드는 System.String 클래스와 동일<br>
@@ -133,8 +133,8 @@ public string Trim();
 <br>
 <br>
 
-## string은 불변클래스(Immutable Class)다
-**즉 string은 참조형식을 이용하지만 불변 클래스 기반으로 이루어진 클래스이다.**<br>
+## 🔔 string은 불변클래스(Immutable Class)다
+**즉 string은 참조형식을 이용하지만 불변 클래스 기반으로 이루어진 클래스이다.** ⭐⭐<br>
 불변클래스란 인스턴스 생성 후 인스턴스가 가지는 **값을 변경하지 못하는 클래스를 의미한다.**<br>
 즉 객체에 넣은 값은 인스턴스가 없어질 때 까지 값을 계속 유지하게 되는 클래스라는 것이다.<br>
 
@@ -155,7 +155,7 @@ class Program
 
 위의 코드에서 1번 과정(**리터럴 문자열 생성**)을 거치게 되면 스택에는 s변수의 값(Hello)에 대한 메모리 주소를 갖고<br>
 Heap(**정확히는 Heap의 String Pool 영역**)에는 해당 주소에 맞게 Hello라는 값이 들어가게 된다.<br>
--> **리터럴 문자열은 컴파일 단계에서 Pool에 등록된다.**<br>
+-> ⭐⭐ **리터럴 문자열은 컴파일 단계에서 Pool에 등록된다.** ⭐⭐<br>
 
 ![인터풀1](https://user-images.githubusercontent.com/43705434/130624788-a2bffbf9-ae3e-4ef4-a654-7b47970f1c9c.PNG)<br>
 <br>
@@ -163,7 +163,7 @@ Heap(**정확히는 Heap의 String Pool 영역**)에는 해당 주소에 맞게 
 2번 과정을 거치면 ss변수에 대한 스택 메모리에는 Hello의 값을 갖고 있는 주소를 갖게되고<br>
 이에 따라 ss의 값은 s의 값과 동일한 위치를 참조하게 된다.(stack 메모리 주소 단순 복사)<br>
 -> **String Intern Pool 내부 "Hello"를 가리키는 주소를 갖고있던 s의 값(주소)을 그대로 복사한 것.<br>
--> 고로 Heap에 메모리가 따로 할당된 것이 아닌 참조변수로서 참조값을 복사한 것 뿐이다.**<br>
+-> 고로 Heap에 메모리가 따로 할당된 것이 아닌 참조변수로서 참조값⭐을 복사한 것 뿐이다.**<br>
 
 ![인터풀2](https://user-images.githubusercontent.com/43705434/130624793-6447eb7e-eab2-4fe0-b604-00ef8ae62376.PNG)<br>
 <br>
@@ -173,8 +173,8 @@ Heap(**정확히는 Heap의 String Pool 영역**)에는 해당 주소에 맞게 
 아래의 그림을 통해 확인할 수 있듯이 s는 6000번지를 참조하게 되고 힙 메모리의 6000번지에는<br>
 "Hello and Welcome"이라는 문자열이 저장되게 된다. 따라서 s는 새로운 문자열을<br>
 ss는 기존의 "Hello" 문자열에 대한 주소를 참조하고 있는 것이다.<br>
--> string은 불변클래스이기에 새로운 값을 넣는다는 것은 아예 새로운 객체를 만들겠다는 의미다.<br>
--> **런타임 시에 새로운 문자열을 생성한 것이기 때문에 Pool에 할당되는 것이 아닌 Heap에 할당된다.**<br>
+-> string은 불변클래스이기에 새로운 값을 넣는다는 것은 아예 새로운 객체를 만들겠다는 의미다.⭐<br>
+-> ⭐⭐ **런타임 시에 새로운 문자열을 생성한 것이기 때문에 Pool에 할당되는 것이 아닌 Heap에 할당된다.** ⭐⭐<br>
 <br>
 
 ![인터풀3](https://user-images.githubusercontent.com/43705434/130624797-58d07cd9-b28a-4215-8700-6a406ba51f02.PNG)<br>
@@ -186,14 +186,14 @@ ss는 기존의 "Hello" 문자열에 대한 주소를 참조하고 있는 것이
 <br>
 <br>
 
-## String Intern Pool (Global String Pool)
-**리터럴 문자열**은 **메모리 관리 차원**에서 **컴파일 시** string Pool이라는 곳에 등록되어 사용된다.<br>
+## 🔔 String Intern Pool (Global String Pool)
+**리터럴 문자열**은 **메모리 관리 차원**에서 ⭐**컴파일 시**⭐ string Pool이라는 곳에 등록되어 사용된다.<br>
 <br>
 
 리터럴 문자열이란, 직접 소스 코드에서 “Hello World” 처럼 쌍따옴표로 묶어서 코딩한 문자열 들이다.<br>
 이러한 리터럴 문자열들을 Intern Pool에 등록해놓고, 동일한 문자열 객체를 여러개 생성하지 않도록 한다.<br>
--> **즉 런타임시에 생성하는 문자열은 포함이 되지 않는다. (당연히 new 키워드는 런타임 시 생성되는 것)**<br>
--> **메모리는 힙에 할당되고 문자열 값 자체만 인턴풀에 등록하기도 한다. 혹은 Intern 메소드로 직접 등록가능**<br>
+-> ⭐ **즉 런타임시에 생성하는 문자열은 포함이 되지 않는다. (당연히 new 키워드는 런타임 시 생성되는 것)** ⭐<br>
+-> **혹은 Intern ⭐ 메소드로 직접 등록가능**<br>
 <br>
 
 ```c#
@@ -210,7 +210,7 @@ string s5 = "Hello";
 ReferenceEqual 메서드를 통해 주소 비교를 할 수 있으며, 실행하면 모두 참조 주소가 같다고 나온다.<br>
 <br>
 
-하지만 **런타임에서 생성해낸 똑같은 문자열일 경우 리터럴 문자열 취급을 하지 않고**<br>
+하지만 **런타임에서 생성해낸 똑같은 문자열일 경우 리터럴 문자열 취급을 하지 않고** ⭐<br>
 새로운 객체를 만든 것이기에 다른 주소를 참조한다. 아래의 코드를 보자.<br>
 
 ```c#
@@ -242,44 +242,46 @@ Garbage Collector가 메모리 부족현상을 빨리 느껴, Garbage Collection
 그럼 Garbage Collection Thread가 동작하는 동안 모든 Thread가 일시 정지하게 되고, 이는 곧 성능저하다.<br>
 <br>
 
-Java7 이후에 String Pool은 Heap 영역에 저장되어 GC 대상이 되었다고 한다.<br>
-C#도 해당 사항이 될 수 있으니 추후에 수정하도록 하자.<br>
+**Java7 이후에 String Pool은 Heap 영역에 저장되어 GC 대상이 되었다고 한다.<br>
+C#도 해당 사항이 될 수 있으니 추후에 수정하도록 하자.**<br>
 출처: https://jinseongsoft.tistory.com/365 [진성 소프트]<br>
 <br>
 	
 </div>
 </details>
+<br>
 
-**헷갈린다면 다음 [링크](https://medium.com/@joongwon/string-%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0-57af94cbb6bc) 에서 몇가지 예제를 살펴보고 오자**<br>
+**헷갈린다면 다음 [링크](https://medium.com/@joongwon/string-%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0-57af94cbb6bc) 에서 몇가지 예제를 살펴보고 오자** ⭐⭐<br>
 <br>
 
 **[장점]**<br>
-1) **메모리 절약** / 매번 String Literal이 생성될 때마다 메모리를 생성시키지 않아도 되고,<br>
+1) **메모리 절약** ⭐ / 매번 String Literal이 생성될 때마다 메모리를 생성시키지 않아도 되고,<br>
 동일 String Literal에 대해서 하나의 String Literal만 가지면 된다. (Immutable이기 때문에 변경 될 경우 새로 생성한다.)<br>
 
-2) **Compare 연산이 빠르다.**<br>
+2) **Compare 연산이 빠르다.** ⭐<br>
 (String Pool의 String Literal을 저장하고 있는 String 변수들은 Reference가 동일하기 때문에<br>
 Deep Comparison을 하지 않고 그냥 Refrence만 비교하는 Shallow Comparison만 필요 하므로 결과 값을 빠르게 알 수 있다.)<br>
 <br>
 <br>
 
 
-## string은 왜 불변클래스일까?
+## 🔔 string은 왜 불변클래스일까?
 그러면 이제 본론으로 들어와서, C#에서 String은 왜 불변일까?에 대한 이야기를 해보겠다.<br>
 String을 불변으로 처리하면서 얻는 이점에 대해 파악한다면, 왜 불변성을 갖게 하는지에 대해 이해할 수 있을 것 같다.<br>
-앞서 언급한 바와 같이 **String을 String Intern pool에서 관리를 한다. 그리고 이것이 가능한 이유가 바로 String이 불변이기 때문이다.**<br>
+
+* 앞서 언급한 바와 같이 **String을 String Intern pool에서 관리를 한다. 이것이 가능한 이유가 바로 String이 불변이기 때문이다.** ⭐<br>
 String pool을 통해 String을 관리함으로써 Runtime에서 **Heap 영역의 많은 메모리를 절약할 수 있다.** 왜냐면 같은 값을 갖는 String에 대해<br>
 같은 메모리를 참조하게 할 수 있기 때문이다. 만약 String이 불변이 아니었다면, 해당 메모리에 값이 언제 바뀔지 알 수 없기 때문에<br>
 String pool 형태로 관리할 수 없게 된다.<br>
 예를 들어 a, b, c라는 String 변수가 모두 같은 메모리를 가리킬 때 a의 값을 바꿔버리면 b와 c의 값도 바뀌는 문제가 발생할 수 있다.<br>
 
-String이 불변이 아니라면 **보안상의 문제**를 야기할 수 있다. 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에<br>
+* String이 불변이 아니라면 **보안상의 문제**를 야기할 수 있다. 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에<br>
 대한 정보가 String으로 다루어지기 때문에 String이 불변이어야 해커의 공격으로부터 값이 변경되는 것을 예방할 수 있다.<br>
 
-String이 불변이기 때문에 **멀티 쓰레딩 환경에서 안전(thread-safe)하다.**<br>
+* String이 불변이기 때문에 **멀티 쓰레딩 환경에서 안전(thread-safe)하다.**<br>
 값의 변경 가능성이 없기 때문에 멀티 쓰레딩 환경에서 동기화 문제를 걱정하지 않아도 된다.<br>
 
-String의 hashcode를 생성 단계에서부터 캐싱한다. 따라서 **String의 hashcode는 쓰일 때마다 매번 계산되지 않는다.**<br>
+* String의 hashcode를 생성 단계에서부터 캐싱한다. 따라서 **String의 hashcode는 쓰일 때마다 매번 계산되지 않는다.**<br>
 이 특징은 특히 객체의 hashCode를 Key로 사용하는 HashMap의 경우에 효과를 발휘한다.<br>
 다른 객체는 키로 쓰일 때마다 hashCode를 계산하는데 비해 String은 캐싱을 하고 있기 때문에 다른 객체를 Key로 했을 때보다<br>
 String을 Key로 했을 때 **더 빠른 속도로 사용할 수 있다.**<br>
@@ -289,11 +291,11 @@ String의 hashcode가 캐싱될 수 있는 이유가 바로 String이 불변이�
 <br>
 <br>
 
-## string 주의할 점
-하지만 문자열에 **새로운 값을 넣을 때 마다 메모리가 새로 할당되어 값이 저장되기 때문에<br>
-자칫 남발했다가는 수많은 가비지를 생성하고 성능에 문제를 끼쳐 속도를 저하시킬 수 있다.**<br>
+## 🔔 string 주의할 점
+하지만 문자열에 ⭐ **새로운 값을 넣을 때 마다 메모리가 새로 할당되어 값이 저장되기 때문에<br>
+자칫 남발했다가는 수많은 가비지를 생성하고 성능에 문제를 끼쳐 속도를 저하시킬 수 있다.** ⭐<br>
 이러한 불변 타입의 string 클래스가 발생시키는 가장 큰 문제는 문자열을 더할 때다.<br>
--> 새로운 값을 넣는 것은 런타임 시 새로운 문자열을 생성하는 것이기 때문에 Heap에 할당된다.<br>
+-> **새로운 값을 넣는 것은 런타임 시 새로운 문자열을 생성하는 것이기 때문에 Heap에 할당된다.**<br>
 
 ```c#
 string txt = "Hello World";
@@ -316,9 +318,9 @@ for(int i = 0; i < 300000; i++)
 
 **문제는 3번 과정에 있다. 끊임없이 메모리를 할당하고 이전의 문자열을 다시 복사하는 과정을<br>
 거치기 때문에 실행 시간이 27초나 걸린 것이다.**<br>
--> **가비지** 가 되어 GC의 호출을 야기한다.<br>
+-> **가비지** ⭐ 가 되어 GC의 호출을 야기한다.<br>
 
-**이러한 문제를 해결하기 위해서는 StringBuilder 클래스를 사용해야 한다.**<br>
+**이러한 문제를 해결하기 위해서는 StringBuilder ⭐ 클래스를 사용해야 한다.**<br>
 ```c#
 string txt = "Hello World";
 
@@ -343,13 +345,13 @@ string newText = sb.ToString();
 4. ToString 메서드를 호출하면 연속적으로 연결된 하나의 문자열을 반환한다.<br>
 
 즉, 잦은 메모리 할당과 복사가 없어졌기 때문에 그만큼 성능이 향상된 것이다.<br>
--> **StringBuilder는 수정할 수 있는 클래스이기 때문에 값이 추가/수정/삭제 되는 형태이기 때문이다.**<br>
+-> **StringBuilder는 수정할 수 있는 클래스이기 때문에 ⭐값이 추가/수정/삭제 되는 형태이기 때문이다.⭐**<br>
 이 때문에 문자열을 연결하는 작업이 많을 때는 반드시 StringBuilder를 사용하는 것을 권장한다고 한다.<br>
 <br>
 <br>
 
 
-## 참조링크
+## 🔔 참조링크
 https://yeolco.tistory.com/140 <br>
 https://guslabview.tistory.com/187 <br>
 https://andjjip.tistory.com/197 <br>
