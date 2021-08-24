@@ -47,7 +47,7 @@ namespace MyStringApplication {
 - String 클래스에는 문자열 객체를 작업하는데 도움이 되는 다양한 메소드(함수)들이 존재한다.<br>
 - 다음 메소드들은 가장 일반적으로 사용되는 메소드들의 리스트다.<br>
 
-1) Compare()<br>
+👉 Compare()<br>
 ```c#
 public static int Compare(string srt1, string str2);
 ```
@@ -57,7 +57,7 @@ public static int Compare(string srt1, string str2);
 - 정렬 순서는 ABC 순이며, 가장 앞 문자부터 비교한다.<br>
 <br>
 
-2) Concat()<br>
+👉 Concat()<br>
 ```c#
 public static string Concat(string str1, string str2);
 ```
@@ -66,7 +66,7 @@ public static string Concat(string str1, string str2);
 - 두 문자열 객체를 연결하여 반환한다.<br>
 <br>
 
-3) Contains()<br>
+👉 Contains()<br>
 ```c#
 public bool Contatins(string str);
 ```
@@ -75,7 +75,7 @@ public bool Contatins(string str);
 - 문자열 내에서 지정된 String 객체가 존재하는지 여부를 나타내는 값을 반환한다.<br>
 <br>
 
-4) Copy()<br>
+👉 Copy()<br>
 ```c#
 public static string Copy(string str);
 ```
@@ -84,7 +84,7 @@ public static string Copy(string str);
 - 지정된 문자열의 복사값으로 새 String 객체를 반환한다.<br>
 <br>
 
-5) Equals()<br>
+👉 Equals()<br>
 ```c#
 public static bool Equals(string str1, string str2);
 ```
@@ -93,7 +93,7 @@ public static bool Equals(string str1, string str2);
 - 지정된 두 String 객체가 동일한지 여부를 반환한다.<br>
 <br>
 
-6) IndexOf()<br>
+👉 IndexOf()<br>
 ```c#
 public int IndexOf(char ch);
 ```
@@ -103,7 +103,7 @@ public int IndexOf(char ch);
 - 매개변수가 문자열(string) 객체인 함수도 오버로딩되어있다.<br>
 <br>
 
-7) Replace()<br>
+👉 Replace()<br>
 ```c#
 public string Replace(string str1, string str2);
 ```
@@ -112,7 +112,7 @@ public string Replace(string str1, string str2);
 - 현재 문자열 객체에 있는 지정된 문자열을 모두 지우고 새로운 문자열로 변경한 문자열 객체를 반환한다.<br>
 <br>
 
-8) Split()<br>
+👉 Split()<br>
 ```c#
 public string[] Split(params char[] seperator);
 ```
@@ -122,7 +122,7 @@ public string[] Split(params char[] seperator);
 - 매개변수 기준으로 문자열을 쪼갠다고 생각하면 된다.<br>
 <br>
 
-9) Trim()<br>
+👉 Trim()<br>
 ```c#
 public string Trim();
 ```
@@ -251,7 +251,7 @@ C#도 해당 사항이 될 수 있으니 추후에 수정하도록 하자.**<br>
 </details>
 <br>
 
-**헷갈린다면 다음 [링크](https://medium.com/@joongwon/string-%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0-57af94cbb6bc) 에서 몇가지 예제를 살펴보고 오자** ⭐⭐<br>
+👉 **헷갈린다면 다음 [링크](https://medium.com/@joongwon/string-%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0-57af94cbb6bc) 에서 몇가지 예제를 살펴보고 오자** ⭐⭐<br>
 <br>
 
 **[장점]**<br>
@@ -269,19 +269,19 @@ Deep Comparison을 하지 않고 그냥 Refrence만 비교하는 Shallow Compari
 그러면 이제 본론으로 들어와서, C#에서 String은 왜 불변일까?에 대한 이야기를 해보겠다.<br>
 String을 불변으로 처리하면서 얻는 이점에 대해 파악한다면, 왜 불변성을 갖게 하는지에 대해 이해할 수 있을 것 같다.<br>
 
-* 앞서 언급한 바와 같이 **String을 String Intern pool에서 관리를 한다. 이것이 가능한 이유가 바로 String이 불변이기 때문이다.** ⭐<br>
+* 👉 앞서 언급한 바와 같이 **String을 String Intern pool에서 관리를 한다. 이것이 가능한 이유가 바로 String이 불변이기 때문이다.** ⭐<br>
 String pool을 통해 String을 관리함으로써 Runtime에서 **Heap 영역의 많은 메모리를 절약할 수 있다.** 왜냐면 같은 값을 갖는 String에 대해<br>
 같은 메모리를 참조하게 할 수 있기 때문이다. 만약 String이 불변이 아니었다면, 해당 메모리에 값이 언제 바뀔지 알 수 없기 때문에<br>
 String pool 형태로 관리할 수 없게 된다.<br>
 예를 들어 a, b, c라는 String 변수가 모두 같은 메모리를 가리킬 때 a의 값을 바꿔버리면 b와 c의 값도 바뀌는 문제가 발생할 수 있다.<br>
 
-* String이 불변이 아니라면 **보안상의 문제**를 야기할 수 있다. 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에<br>
+* 👉 String이 불변이 아니라면 **보안상의 문제**를 야기할 수 있다. 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에<br>
 대한 정보가 String으로 다루어지기 때문에 String이 불변이어야 해커의 공격으로부터 값이 변경되는 것을 예방할 수 있다.<br>
 
-* String이 불변이기 때문에 **멀티 쓰레딩 환경에서 안전(thread-safe)하다.**<br>
+* 👉 String이 불변이기 때문에 **멀티 쓰레딩 환경에서 안전(thread-safe)하다.**<br>
 값의 변경 가능성이 없기 때문에 멀티 쓰레딩 환경에서 동기화 문제를 걱정하지 않아도 된다.<br>
 
-* String의 hashcode를 생성 단계에서부터 캐싱한다. 따라서 **String의 hashcode는 쓰일 때마다 매번 계산되지 않는다.**<br>
+* 👉 String의 hashcode를 생성 단계에서부터 캐싱한다. 따라서 **String의 hashcode는 쓰일 때마다 매번 계산되지 않는다.**<br>
 이 특징은 특히 객체의 hashCode를 Key로 사용하는 HashMap의 경우에 효과를 발휘한다.<br>
 다른 객체는 키로 쓰일 때마다 hashCode를 계산하는데 비해 String은 캐싱을 하고 있기 때문에 다른 객체를 Key로 했을 때보다<br>
 String을 Key로 했을 때 **더 빠른 속도로 사용할 수 있다.**<br>
