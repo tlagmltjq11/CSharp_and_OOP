@@ -11,6 +11,7 @@ SQL에서 가장 많이 사용하는 문법은 다음 4가지 이다.<br>
 👉 order by : 어떤 항목을 기준으로 정렬할 것인가<br>
 👉 select : 어떤 항목을 추출할 것인가<br>
 이러한 쿼리식 from, where, orderby, select 등은 System.Linq에 정의되어 있는 **IEnumerable(T)의 확장 메소드**를 통해 사용가능한 것<br>
+-> 그렇다는건 아마 IEnumerable 을 구현한 컬렉션으로만 Linq를 사용할 수 있다는 의미이지 않을까 싶다.<br>
 <br>
 
 문장을 서술 하듯 질의를 하기 때문에 for와 if문을 사용하는 방식보다 가독성이 좋아 실수를 줄이고 유지보수가 쉽다.<br>
