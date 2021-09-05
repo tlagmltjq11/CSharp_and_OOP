@@ -38,6 +38,16 @@ Unmanagement 메모리 해제나 Stream Close를 구현하도록 권장을 하�
 즉, 객체가 다 사용되었는데, 파일은 계속 열려 있는 상태가 되고, GC가 언제 이를 Close할지도 모른다는 것이다.<br>
 이러한 문제점을 해결하기 위해 Dispose 패턴을 사용한다.** ⭐⭐⭐<br>
 <br>
+
+* finalizer사용시 성능 이슈 ⭐<br>
+finalizer를 포함한 객체의 경우엔 finalizer를 호출해야하기 때문에<br>
+가비지로 판단된 이후에도 즉시 메모리에서 해제하지 않는다.<br>
+그렇기 때문에 finalizer를 포함하고 있는 객체를 사용하면 가비지 컬렉트 과정이 더 길어진다.<br>
+
+가비지 컬렉터는 객체에 대한 참조를 다른 큐에 삽입하여 나중에 finalize가 호출될 수 있도록 준비하는데<br>
+이 과정에서 finalizer가 없는 객체는 메모리로부터 즉각 제거된다.<br>
+그러나 finalizer가 있는 객체는 다른 큐에 넣어두었다 일정시간이 지난뒤 객체를 꺼낸 후 finalizer를 호출하며 메모리를 해제한다.<br>
+<br>
 <br>
 
 (2) Unmanaged 리소스가 있는 클래스는 일반적으로 IDisposable이라는 인터페이스를 추가하고, IDisposable.Dispose() 메서드를 구현한다.<br>
