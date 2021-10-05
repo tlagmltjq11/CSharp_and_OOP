@@ -254,6 +254,6 @@ temp.Speak(); //흰둥이->멍멍!
 1. 구현 클래스에서 메서드를 재정의 해버린다.<br>
 2. 메서드 재정의 코드에 특정 인터페이스의 메서드로 명시적 위임한다.<br>
 
-https://webfirewood.tistory.com/130 (다이아몬드 문제 참고)<br>
+https://siyoon210.tistory.com/125 (다이아몬드 문제 참고)<br>
 <br>
 <br>
