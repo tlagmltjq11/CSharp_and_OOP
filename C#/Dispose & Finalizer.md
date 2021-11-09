@@ -68,6 +68,8 @@ public void Dispose() {
 
 클래스 사용자는 이 Dispose()메서드를 실행하여 **GC를 기다리지 않고 리소스를 즉시 해제한다.** ⭐<br>
 Dispose가 있더라도 클래스 사용자가 이를 호출하지 않았을 경우, 최후의 보루로 리소스를 해제하고 싶으면 개발자는 Finalizer를 추가할 수 있다.<br>
+즉, 사용자가 Dispose()메서드를 항상 올바르게 호출할 것이라고 가정할 수 없다.<br>
+비관리 리소스가 어떠한 경우에도 누수되지 않도록 올바르게 정리될 수 있도록 finalizer를 구현해야 한다.<br>
 (물론 Finalizer를 추가하면 [문제#24](https://www.csharpstudy.com/algo/qa.aspx?Id=24&pg=0)에서 소개한 성능저하 부작용이 생길 수 있다)<br>
 
 * finalizer사용시 성능 이슈 ⭐<br>
