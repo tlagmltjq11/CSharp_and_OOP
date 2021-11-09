@@ -1,4 +1,17 @@
 ## 🔔 Unmanaged Resource
+
+**헷갈리는 부분**<br>
+헷갈렸던 부분이 알고있기로 Unmanaged Resource는 GC의 대상이 아니기 때문에<br>
+직접 릴리즈 해주지 않으면 안되는 것으로 알았는데..<br>
+결국 언젠가는 GC에 의해 소멸자가 호출되어 (이때 소멸자 내부에서 Dispose를 호출해줌) <br>
+해제가 된다는 점이다. 알아보자!!<br>
+
+링크 참조<br> 
+https://velog.io/@jihoson94/C-Memory-Management-Releasing-unmanaged-resources- <br>
+<br>
+<br>
+<br>
+
 **C#클래스에 파일 핸들이나 DB Connection같은 Unmanaged 리소스를 가지고 있을 때, 어떻게 이들 리소스를 해제할 수 있는가?**<br>
 -> 여기서 Unmanaged Resource란 file, DB connection, stream 등 IDisposable 을 구현하고있는 클래스들로 **외부 자원**들을 의미한다.<br>
 -> 이러한 unmanaged resource는 **⭐ GC에 의해 관리되지 않기 ⭐ 때문에 직접 release해야한다.**<br>
