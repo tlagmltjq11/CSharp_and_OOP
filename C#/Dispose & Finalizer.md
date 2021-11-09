@@ -5,6 +5,12 @@
 직접 릴리즈 해주지 않으면 안되는 것으로 알았는데..<br>
 결국 언젠가는 GC에 의해 소멸자가 호출되어 (이때 소멸자 내부에서 Dispose를 호출해줌) <br>
 해제가 된다는 점이다. 알아보자!!<br>
+<br>
+
+**내 답변**<br>
+-> 결국 Unmanaged Resource의 객체 자체는 GC의 대상이기 때문에 소멸자(Dispose를 호출하는)를 언젠가 호출당하기 때문에<br>
+-> 자원의 반납 자체는 **언젠가는** 된다는 것이 맞는 답변같다.<br>
+<br>
 
 링크 참조<br> 
 https://velog.io/@jihoson94/C-Memory-Management-Releasing-unmanaged-resources- <br>
