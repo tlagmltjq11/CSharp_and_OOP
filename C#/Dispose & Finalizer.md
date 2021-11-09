@@ -1,4 +1,23 @@
 ## 🔔 Unmanaged Resource
+
+**헷갈리는 부분**<br>
+헷갈렸던 부분이 알고있기로 Unmanaged Resource는 GC의 대상이 아니기 때문에<br>
+직접 릴리즈 해주지 않으면 안되는 것으로 알았는데..<br>
+결국 언젠가는 GC에 의해 소멸자가 호출되어 (이때 소멸자 내부에서 Dispose를 호출해줌) <br>
+해제가 된다는 점이다. 알아보자!!<br>
+<br>
+
+**내 답변**<br>
+-> 결국 Unmanaged Resource의 객체 자체는 GC의 대상이기 때문에 소멸자(Dispose를 호출하는)를 언젠가 호출당하기 때문에<br>
+-> 자원의 반납 자체는 **언젠가는** 된다는 것이 맞는 답변같다.<br>
+<br>
+
+링크 참조<br> 
+https://velog.io/@jihoson94/C-Memory-Management-Releasing-unmanaged-resources- <br>
+<br>
+<br>
+<br>
+
 **C#클래스에 파일 핸들이나 DB Connection같은 Unmanaged 리소스를 가지고 있을 때, 어떻게 이들 리소스를 해제할 수 있는가?**<br>
 -> 여기서 Unmanaged Resource란 file, DB connection, stream 등 IDisposable 을 구현하고있는 클래스들로 **외부 자원**들을 의미한다.<br>
 -> 이러한 unmanaged resource는 **⭐ GC에 의해 관리되지 않기 ⭐ 때문에 직접 release해야한다.**<br>
@@ -55,6 +74,8 @@ public void Dispose() {
 
 클래스 사용자는 이 Dispose()메서드를 실행하여 **GC를 기다리지 않고 리소스를 즉시 해제한다.** ⭐<br>
 Dispose가 있더라도 클래스 사용자가 이를 호출하지 않았을 경우, 최후의 보루로 리소스를 해제하고 싶으면 개발자는 Finalizer를 추가할 수 있다.<br>
+즉, 사용자가 Dispose()메서드를 항상 올바르게 호출할 것이라고 가정할 수 없다.<br>
+비관리 리소스가 어떠한 경우에도 누수되지 않도록 올바르게 정리될 수 있도록 finalizer를 구현해야 한다.<br>
 (물론 Finalizer를 추가하면 [문제#24](https://www.csharpstudy.com/algo/qa.aspx?Id=24&pg=0)에서 소개한 성능저하 부작용이 생길 수 있다)<br>
 
 * finalizer사용시 성능 이슈 ⭐<br>
