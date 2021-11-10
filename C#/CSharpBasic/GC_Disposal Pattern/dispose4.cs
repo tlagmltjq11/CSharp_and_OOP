@@ -17,6 +17,11 @@ using System.IO;
 // 언젠가는 수거되어 소멸자를 호출당할 것 같다. 그래서 호출자 내부에서 Dispose가
 // 호출되어 자원이 반납되지 않을까 생각한다.
 
+//강사님 답변
+//네 맞습니다. GC 대상이 아닙니다. 그래서 FileStream 클래스 제작자가 소멸자 에서 닫아 주고 있습니다.
+//만약 GC의 대상이라면 FileStream 클래스 제작자가 굳이 소멸자에서 닫는 작업을 하지 않아도 되겠지요 ??
+//언제가는 닫힌다는 것은 "언젠가는 FileStream 클래스의 소멸자가 호출된다" 라는 의미 겠지요 ..
+
 namespace CSHARP.CSharpBasic.GC_Disposal_Pattern
 {
     class dispose4
