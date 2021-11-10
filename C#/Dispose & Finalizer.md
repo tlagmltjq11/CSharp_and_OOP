@@ -12,6 +12,12 @@
 -> 자원의 반납 자체는 **언젠가는** 된다는 것이 맞는 답변같다.<br>
 <br>
 
+**강사님 답변**<br>
+네 맞습니다. GC 대상이 아닙니다. 그래서 FileStream 클래스 제작자가 소멸자 에서 닫아 주고 있습니다.<br>
+만약 GC의 대상이라면 FileStream 클래스 제작자가 굳이 소멸자에서 닫는 작업을 하지 않아도 되겠지요 ??<br>
+언제가는 닫힌다는 것은 "언젠가는 FileStream 클래스의 소멸자가 호출된다" 라는 의미 겠지요 ..<br>
+<br>
+
 링크 참조<br> 
 https://velog.io/@jihoson94/C-Memory-Management-Releasing-unmanaged-resources- <br>
 <br>
