@@ -1,3 +1,5 @@
+https://stackoverflow.com/questions/761194/interface-vs-abstract-class-general-oo
+
 👉 모든 디자인 패턴의 시작은 하위(자식) 클래스 객체를 상위(부모) 클래스 객체에 대입할 수 있는, 즉 **다형성**에서 시작된다고 한다.
 <br>
 
